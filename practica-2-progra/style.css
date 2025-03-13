@@ -224,16 +224,55 @@ body {
     }
 }
 
-/* RESEÑAS */
-.resenia {
+
+
+h2 {
+    text-align: center;
     margin-bottom: 20px;
 }
-.estrellas {
-    color: #e5f039;
+
+/* GRID PARA LAS TARJETAS */
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
-.estrellas-vacia {
-    color: #ccc;
+
+/* TARJETAS DE RESEÑAS */
+.review-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.center {
+
+/* FLEXBOX PARA ORGANIZAR EL PERFIL Y EL TEXTO */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profile .name {
+    font-weight: bold;
+}
+
+.stars {
+    color: gold;
+}
+
+.text {
+    font-size: 14px;
     text-align: center;
+    color: #555;
 }
