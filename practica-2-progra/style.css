@@ -20,7 +20,7 @@
 }
 
 #header {
-    background-color: #f1c482;
+    background-color: #f3a8c2;
     border-radius: 10px;
     position: fixed;
     width: 100%;
@@ -36,7 +36,7 @@
 }
 
 #header:hover {
-    background-color: #c2906b;
+    background-color: #f28582;
     box-shadow: 5px 5px 4px #627e9a;
 }
 
@@ -76,9 +76,9 @@
     text-decoration: none;
     width: 125px;
     padding: 10px;
-    border: 1px solid #41516a;
+    border: 1px solid #84a59e;
     border-radius: 10px;
-    background-color: #41516a;
+    background-color: #84a59e;
     color: #FFFFFF;
     box-sizing: border-box;
 }
@@ -100,11 +100,20 @@
 .product-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
     margin-right: 15px !important;
     margin-top: 15vh;
+    background-color: #b2e2f2; /* Color de fondo del cuadro */
+    padding: 20px; /* Espacio interno para separar contenido del borde */
+    border-radius: 10px; /* Bordes redondeados para mejor estética */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    width: 80%; /* Ajusta el ancho según necesidad */
+    max-width: 1000px; /* Evita que sea demasiado grande en pantallas grandes */
+    margin: 15vh auto; /* Centrar horizontalmente */
+
+    
 }
 
 .product-item {
@@ -122,11 +131,11 @@
 }
 
 .product-detail {
-    width: 51%;
+    width: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: justify;
 }
 
 .product-item img {
@@ -165,7 +174,16 @@
 
 .area-d {
     grid-area: d;
-    background-color: #023423;
+    background-color: #6dbba1;
+}
+
+.area-e {
+    grid-area: e;
+    background-color: #0d2e21;
+}
+.area-f {
+    grid-area: f;
+    background-color: #6060dc;
 }
 
 .contenedor > div {
@@ -182,14 +200,15 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 1000px) {
+@media (max-width: 10000px) {
     .contenedor {
         display: grid;
         gap: 5px;
-        grid-template-areas: "a a b b"
-                             "c c d d";
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 2fr;
+        grid-template-areas: "a b c"
+                             "d e e"
+                             "f f f";
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 2fr;
     }
 }
 
@@ -197,10 +216,10 @@
     .contenedor {
         display: grid;
         gap: 5px;
-        grid-template-areas: "a a"
-                             "b b"
-                             "c c"
-                             "d d";
+        grid-template-areas: "a b"
+                             "c d"
+                             "e e"
+                             "f f";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 2fr;
     }
@@ -224,7 +243,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /*background-color: #3eeef8;*/
+    background-color: #f7ede3;
     padding-top: 5px;
 }
 
@@ -239,16 +258,16 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* GRID PARA LAS TARJETAS */
+/* TARJETAS */
 .reviews {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 20px;
 }
 
 /* TARJETAS DE RESEÑAS */
 .review-card {
-    background: white;
+    background: #75f9f2;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -257,7 +276,7 @@ h2 {
     align-items: center;
 }
 
-/* FLEXBOX PARA ORGANIZAR EL PERFIL Y EL TEXTO */
+/* ORGANIZA EL PERFIL Y EL TEXTO */
 .profile {
     display: flex;
     align-items: center;
@@ -273,10 +292,6 @@ h2 {
 
 .profile .name {
     font-weight: bold;
-}
-
-.stars {
-    color: gold;
 }
 
 .text {
