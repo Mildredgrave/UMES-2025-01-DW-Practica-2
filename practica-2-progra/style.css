@@ -1,0 +1,239 @@
+* {
+    font-family: "Roboto Flex", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0,
+      "wdth" 100,
+      "GRAD" 0,
+      "XOPQ" 96,
+      "XTRA" 468,
+      "YOPQ" 79,
+      "YTAS" 750,
+      "YTDE" -203,
+      "YTFI" 738,
+      "YTLC" 514,
+      "YTUC" 712;
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    padding-top: 5px;
+}
+
+#header {
+    background-color: #f1c482;
+    border-radius: 10px;
+    position: fixed;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding: 10px;
+    transition: background-color 0.5s ease-in-out;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#header:hover {
+    background-color: #c2906b;
+    box-shadow: 5px 5px 4px #627e9a;
+}
+
+#header .identidad {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+/* CONTENIDO PRINCIPAL */
+#content {
+    margin-top: 20vh;
+    margin-left: 15px;
+}
+
+/* FOOTER */
+#footer {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    background-color: black;
+    color: #FFFFFF;
+}
+
+/* MENU */
+.menu-item {
+    margin-left: 20px;
+    text-decoration: none;
+    width: 125px;
+    padding: 10px;
+    border: 1px solid #41516a;
+    border-radius: 10px;
+    background-color: #41516a;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.menu-item:focus {
+    background-color: #003152;
+    color: #FFFFFF;
+}
+
+/* PRODUCTOS */
+.product-info-list {
+    background-color: #e2bd87;
+}
+
+.product-info-list:first-child {
+    color: #FFFFFF;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-right: 15px !important;
+    margin-top: 15vh;
+}
+
+.product-item {
+    border-radius: 10px;
+    border: 1px solid #000000;
+    transition: box-shadow 0.3s ease-in-out;
+    min-height: 150px; /* En lugar de height fija */
+    flex: 0 1 400px;
+    display: flex;
+    align-items: stretch;/* Hace que la imagen y el detalle tengan la misma altura */
+}
+
+.product-item:hover {
+    box-shadow: 5px 5px 5px #003152;
+}
+
+.product-detail {
+    width: 51%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-item img {
+    width: 49%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    display: grid;
+    gap: 5px;
+    grid-template-areas: "a d f"
+                         "b e f"
+                         "c e f";
+    grid-template-columns: 2fr 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto); /* Evita que los elementos se amontonen */
+}
+
+.area-a {
+    grid-area: a;
+    background-color: #e2bd87;
+}
+
+.area-b {
+    grid-area: b;
+    background-color: #C0C0C0;
+}
+
+.area-c {
+    grid-area: c;
+    background-color: #003152;
+}
+
+.area-d {
+    grid-area: d;
+    background-color: #023423;
+}
+
+.contenedor > div {
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #C0C0C0;
+}
+
+.contenedor > div > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .contenedor {
+        display: grid;
+        gap: 5px;
+        grid-template-areas: "a a b b"
+                             "c c d d";
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 2fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .contenedor {
+        display: grid;
+        gap: 5px;
+        grid-template-areas: "a a"
+                             "b b"
+                             "c c"
+                             "d d";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 2fr;
+    }
+
+    #header {
+        width: 100%;
+    }
+
+    #header .menu {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+}
+
+/* RESEÑAS */
+.resenia {
+    margin-bottom: 20px;
+}
+.estrellas {
+    color: #e5f039;
+}
+.estrellas-vacia {
+    color: #ccc;
+}
+.center {
+    text-align: center;
+}
