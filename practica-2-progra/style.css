@@ -19,10 +19,6 @@
     box-sizing: border-box; 
 }
 
-body {
-    padding-top: 5px;
-}
-
 #header {
     background-color: #f1c482;
     border-radius: 10px;
@@ -224,7 +220,19 @@ body {
     }
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /*background-color: #3eeef8;*/
+    padding-top: 5px;
+}
 
+.container_resenia {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10vh;
+}
 
 h2 {
     text-align: center;
