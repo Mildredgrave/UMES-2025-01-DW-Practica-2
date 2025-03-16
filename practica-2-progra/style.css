@@ -18,7 +18,7 @@
     margin: 0;
     box-sizing: border-box; 
 }
-
+/*todos*/
 #header {
     background-color: #f3a8c2;
     border-radius: 10px;
@@ -60,15 +60,10 @@
     margin-left: 15px;
 }
 
-/* FOOTER */
-#footer {
-    width: 100%;
-    flex-direction: column;
+.center-text {
     text-align: center;
-    padding: 15px;
-    background-color: black;
-    color: #FFFFFF;
 }
+
 
 /* MENU */
 .menu-item {
@@ -113,6 +108,23 @@
     margin: 5vh auto 0 auto;  
 }
 
+.product-container-inicio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-right: 15px auto;
+    margin-top: 15vh;
+    padding: 10vh; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #d4bc8c8f;
+    width: 80%; 
+    max-width: 1000px;
+    margin: 5vh auto 0 auto;  
+}
+
 .product-item {
     border-radius: 10px;
     border: 1px solid #000000;
@@ -133,7 +145,7 @@
     flex-direction: column;
     justify-content: flex-start;
 }
-
+/*solo para pagina incial*/
 .product-item:hover {
     box-shadow: 5px 5px 5px #003152;
 }
@@ -146,6 +158,7 @@
     box-shadow: 5px 5px 15px #be0f75;
 }
 
+/*solo para pagina incial*/
 .product-detail {
     width: 100%;
     padding: 10px;
@@ -154,6 +167,7 @@
     justify-content: justify;
 }
 
+/*solo para pagina incial*/
 .product-item img {
     width: 49%;
     height: 100%;
@@ -165,6 +179,7 @@
     width: 100%;
     height: 60%;
     object-fit: cover;
+    border-radius: 10px 10px 10px 10px;
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -269,12 +284,12 @@ body {
     padding-top: 5px;
 }
 
-
 .container_resenia {
     max-width: 1200px;
     margin: auto;
-    padding: 10vh;
+    padding: 15vh;
 }
+
 
 h2 {
     text-align: center;
@@ -284,7 +299,7 @@ h2 {
 /* TARJETAS */
 .reviews {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
     gap: 20px;
 }
 
@@ -319,7 +334,8 @@ h2 {
 
 .profile img {
     width: 100%;
-    height: 100px;
+    height: auto; 
+    max-width: 100px; 
     border-radius: 50%;
 }
 
@@ -332,4 +348,46 @@ h2 {
     text-align: center;
     color: #000000;
 }
+
+/* Media Queries para pantallas */
+@media (max-width: 1000px) {
+    .container_resenia {
+        padding: 5vh;
+    }
+
+    .reviews {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    }
+
+    .review-card, .review-personal {
+        padding: 15px;
+    }
+
+    .profile img {
+        max-width: 80px; 
+    }
+}
+
+@media (max-width: 500px) {
+    .container_resenia {
+        padding: 2vh;
+    }
+
+    .reviews {
+        grid-template-columns: 1fr; 
+    }
+
+    .review-card, .review-personal {
+        padding: 10px;
+    }
+
+    .profile img {
+        max-width: 60px; 
+    }
+
+    .text {
+        font-size: 12px;
+    }
+}
+
 
