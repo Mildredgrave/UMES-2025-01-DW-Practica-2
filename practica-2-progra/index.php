@@ -57,7 +57,7 @@
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalCotizacion">Solicitar Reservación</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="reservaciones/reservaciones.txt">Reservaciones</a>
+                            <a class="nav-link" href="reservaciones/reservacion.php">Reservaciones</a>
                         </li>
                     </ul>
                 </div>
