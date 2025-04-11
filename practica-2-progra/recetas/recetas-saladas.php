@@ -1,10 +1,56 @@
+<?php
+    $archivo = file_get_contents('../recetas/recetas-saladas.txt');
+    if ($archivo === false) {
+        echo "Error: No se pudo cargar el archivo recetas-dulces.txt";
+        exit;
+    }
+    $recetas = explode("===", $archivo);
+
+    function formatearReceta($bloque) {
+        $lineas = explode("\n", $bloque);
+        $titulo = '';
+        $descripcion = '';
+        $ingredientes = '';
+        $pasos = '';
+        $imagen = '';
+    
+        foreach ($lineas as $linea) {
+            if (strpos($linea, 'Título:') === 0) {
+                $titulo = trim(substr($linea, strlen('Título:')));
+            } elseif (strpos($linea, 'Descripción:') === 0) {
+                $descripcion = trim(substr($linea, strlen('Descripción:')));
+            } elseif (strpos($linea, 'Ingredientes:') === 0) {
+                $ingredientes = trim(substr($linea, strlen('Ingredientes:')));
+            } elseif (strpos($linea, 'Pasos:') === 0) {
+                $pasos = trim(substr($linea, strlen('Pasos:')));
+            } elseif (strpos($linea, 'Imagen:') === 0) {
+                $imagen = trim(substr($linea, strlen('Imagen:')));
+            }
+        }
+    
+        return '
+        <div class="receta">
+            <h3>' . htmlspecialchars($titulo) . '</h3>
+            ' . ($imagen ? '<img src="../imagenes/' . htmlspecialchars($imagen) . '" alt="' . htmlspecialchars($titulo) . '" class="img-fluid mb-3" style="max-width:300px;">' : '') . '
+            <p>' . htmlspecialchars($descripcion) . '</p>
+            <h4>Ingredientes:</h4>
+            <ul>
+                <li>' . str_replace(', ', '</li><li>', htmlspecialchars($ingredientes)) . '</li>
+            </ul>
+            <h4>Pasos:</h4>
+            <ol>
+                <li>' . str_replace('. ', '</li><li>', htmlspecialchars($pasos)) . '</li>
+            </ol>
+        </div>';
+    }
+?>    
+    
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
         <title>Rincón del Café</title>
-        <link rel="icon" href="../imagenes/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="../style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Restaurante Rincón del Café, donde disfrutarás de cafés de alta calidad y postres artesanales en un ambiente acogedor.">
         <meta name="keywords" content="restaurante, café, postres, artesanal, Rincón del Café">
         <meta name="author" content="Restaurante de café">
@@ -12,11 +58,13 @@
         <meta property="og:description" content="Un restaurante único con lo mejor en café y postres artesanales.">
         <meta property="og:image" content="imagenes/restaurante1.jpg">
         <meta property="og:url" content="http://rincondelcafe.com">
+        <link rel="icon" href="../imagenes/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
     
-        
+
     </head>
 
     <body>
@@ -26,143 +74,23 @@
                 <h1>Recetas Saladas</h1>
             </div>
             <div class="menu">
-                <a class="menu-item" href="../index.php">Inicio</a> 
+                <a class="menu-item" href="../index.php">Inicio</a>
             </div>
         </div>
 
         <div class="product-container">
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Quiche de Espinacas y Queso Feta</h3>
-                    <br><p><ins><strong>Descripción:</strong></ins>
-                    <br>Una tarta salada con espinacas frescas y queso feta, perfecta para servir con una ensalada ligera.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                    <ul>
-                        <li>1 base de masa quebrada, 300 g de espinacas.</li>
-                        <li>150 g de queso feta.</li>
-                        <li>4 huevos, 200 ml de nata líquida.</li>
-                        <li>1 cucharadita de nuez moscada.</li>
-                        <li>sal y pimienta.</li>
-                    </ul>
-                    <ins><strong>Pasos:</strong></ins>
-                    <ol>
-                        <li>Precalentar el horno a 180°C.</li>
-                        <li>Cocinar las espinacas en una sartén hasta que se reduzcan y soltar el exceso de agua.</li>
-                        <li>Batir los huevos con la nata, nuez moscada, sal y pimienta.</li>
-                        <li>Colocar las espinacas cocidas sobre la base de masa y añadir el queso feta desmenuzado.</li>
-                        <li>Verter la mezcla de huevo y nata sobre las espinacas.</li>
-                        <li>Hornear durante 30-35 minutos.</li>
-                    </ol> 
-                    </p>
-                    <img src="../imagenes/recetas1.jpg" alt="Imagén de Quiche de Espinacas y Queso Fet">
-                </div>
+            
+            <div class="product-detail">
+            <?php
+                $i = 1;
+                foreach ($recetas as $receta) {
+                    echo "<!-- Receta #$i -->\n";
+                    echo formatearReceta($receta);
+                    $i++;
+                }
+            ?>
             </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Sándwich de Pollo al Curry</h3>
-                    <br><p><ins><strong>Descripción:</strong></ins>
-                    <br>Un delicioso sándwich con pollo desmenuzado, ensalada y mayonesa de curry, ideal para una comida rápida y sabrosa.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>2 panes de molde.</li>
-                            <li>200 g de pechuga de pollo cocida y desmenuzada.</li>
-                            <li>1 cucharada de mayonesa</li>
-                            <li>1 cucharadita de curry en polvo.</li>
-                            <li>lechuga y tomate.</li>
-                        </ul>
-                    <ins><strong>Pasos:</strong></ins>
-                    <ol>
-                        <li>Mezclar el pollo desmenuzado con la mayonesa y el curry.</li>
-                        <li>Colocar una capa de la mezcla sobre una rebanada de pan.</li>
-                        <li>Añadir lechuga y tomate fresco.</li>
-                        <li>Cubrir con la otra rebanada de pan y servir.</li>
-                    </ol>
-                    </p>
-                    <img src="../imagenes/recetas2.jpg" alt="Imagén de Sándwich de Pollo al Curry">
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Ensalada de Quinoa y Vegetales</h3>
-                    <br><p><ins><strong>Descripción:</strong></ins>
-                    <br>Una ensalada ligera pero nutritiva, con quinoa, pepino, tomate, aguacate y un toque de limón.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>200 g de quinoa.</li>
-                            <li>1 pepino.</li>
-                            <li>1 tomate.</li>
-                            <li>1 aguacate.</li>
-                            <li>Jugo de 1 limón.</li>
-                            <li>Aceite de oliva.</li>
-                            <li>Sal y pimienta</li>
-                        </ul>
-                    
-                    <ins><strong>Pasos:</strong></ins>
-                        <ol>
-                            <li>Cocinar la quinoa según las instrucciones del paquete y dejar enfriar.</li>
-                            <li>Cortar el pepino, tomate y aguacate en trozos pequeños.</li>
-                            <li>Mezclar todos los ingredientes en un bol.</li>
-                            <li>Aliñar con aceite de oliva, limón, sal y pimienta.</li>
-                        </ol>
-                    </p>
-                    <img src="../imagenes/recetas3.jpg" alt="Imagén de Ensalada de Quinoa y Vegetalest">
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Pan de Ajo y Hierbas</h3>
-                    <p><ins><strong>Descripción:</strong></ins>
-                    <br>Pan crujiente cubierto con mantequilla de ajo y hierbas, ideal para acompañar cualquier plato o servir como aperitivo.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>1 barra de pan.</li>
-                            <li>100 g de mantequilla.</li>
-                            <li>2 dientes de ajo picados.</li>
-                            <li>Hierbas frescas (romero, tomillo)</li>
-                            <li>Sal</li>
-                        </ul>
-                    </p>
-                    <p><ins><strong>Pasos:</strong></ins>
-                        <ol>
-                            <li>Precalentar el horno a 180°C.</li>
-                            <li>Derretir la mantequilla y añadir el ajo picado y las hierbas.</li>
-                            <li>Cortar el pan en rodajas y untar cada rodaja con la mezcla de mantequilla.</li>
-                            <li>Hornear durante 10-12 minutos hasta que esté dorado.</li>
-                        </ol>
-                    </p>
-                    <img src="../imagenes/recetas4.jpg" alt="Imagén de Pan de Ajo y Hierbas">
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Tostadas de Aguacate y Huevo Poached</h3>
-                    <p><ins><strong>Descripción:</strong></ins>
-                    <br>Una tostada de pan integral con aguacate cremoso, huevo poached y un toque de salsa picante.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>2 rebanadas de pan integral.</li>
-                            <li>2 rebanadas de pan integral.</li>
-                            <li>1 aguacate maduro.</li>
-                            <li>2 huevos.</li>
-                            <li>Salsa picante (opcional)</li>
-                            <li>Sal y pimienta.</li>
-                        </ul>
-                    </p>
-                    <p><ins><strong>Pasos:</strong></ins>
-                        <ol>
-                            <li>Tostar las rebanadas de pan integral.</li>
-                            <li>Triturar el aguacate con sal y pimienta y untarlo sobre las tostadas.</li>
-                            <li>Pochar los huevos en agua con vinagre durante 3-4 minutos.</li>
-                            <li>Colocar los huevos sobre el aguacate y añadir salsa picante si lo deseas.</li>
-                        </ol>
-                    </p>
-                    <img src="../imagenes/recetas1.jpg" alt="Imagén de Tostadas de Aguacate y Huevo Poached">
-                </div>
-            </div>
+            
         </div>
 
         <footer id="footer" class="bg-dark text-white py-3">
