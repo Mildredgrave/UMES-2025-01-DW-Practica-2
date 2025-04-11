@@ -135,6 +135,17 @@
     align-items: stretch;/* Hace que la imagen y el detalle tengan la misma altura */
 }
 
+.product-item-recetas{
+    border-radius: 10px;
+    border: 1px solid #000000;
+    transition: box-shadow 0.3s ease-in-out;
+    min-height: 150px; 
+    flex: 0 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 
 /*solo para pagina incial*/
 .product-item:hover {
