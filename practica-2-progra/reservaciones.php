@@ -9,7 +9,7 @@
 
         echo "<h2>Reservación exitosa</h2>";
         echo "<p>Hemos recibido tu solicitud de reservación y se te estará enviando un mensaje a tu número de teléfono $telefono</p>";
-        echo "<a href='../index.php'><button>Volver al inicio</button></a>";
+
 
         // Verifica si el directorio existe, si no, lo crea
         (!is_dir('reservaciones')) ? mkdir('reservaciones') : '';
