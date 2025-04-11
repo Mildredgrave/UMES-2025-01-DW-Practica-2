@@ -1,3 +1,50 @@
+<?php
+    $archivo = file_get_contents('../recetas/recetas-dulces.txt');
+    if ($archivo === false) {
+        echo "Error: No se pudo cargar el archivo recetas-dulces.txt";
+        exit;
+    }
+    $recetas = explode("===", $archivo);
+
+    function formatearReceta($bloque) {
+        $lineas = explode("\n", $bloque);
+        $titulo = '';
+        $descripcion = '';
+        $ingredientes = '';
+        $pasos = '';
+        $imagen = '';
+    
+        foreach ($lineas as $linea) {
+            if (strpos($linea, 'Título:') === 0) {
+                $titulo = trim(substr($linea, strlen('Título:')));
+            } elseif (strpos($linea, 'Descripción:') === 0) {
+                $descripcion = trim(substr($linea, strlen('Descripción:')));
+            } elseif (strpos($linea, 'Ingredientes:') === 0) {
+                $ingredientes = trim(substr($linea, strlen('Ingredientes:')));
+            } elseif (strpos($linea, 'Pasos:') === 0) {
+                $pasos = trim(substr($linea, strlen('Pasos:')));
+            } elseif (strpos($linea, 'Imagen:') === 0) {
+                $imagen = trim(substr($linea, strlen('Imagen:')));
+            }
+        }
+    
+        return '
+        <div class="receta">
+            <h3>' . htmlspecialchars($titulo) . '</h3>
+            ' . ($imagen ? '<img src="../imagenes/' . htmlspecialchars($imagen) . '" alt="' . htmlspecialchars($titulo) . '" class="img-fluid mb-3" style="max-width:300px;">' : '') . '
+            <p>' . htmlspecialchars($descripcion) . '</p>
+            <h4>Ingredientes:</h4>
+            <ul>
+                <li>' . str_replace(', ', '</li><li>', htmlspecialchars($ingredientes)) . '</li>
+            </ul>
+            <h4>Pasos:</h4>
+            <ol>
+                <li>' . str_replace('. ', '</li><li>', htmlspecialchars($pasos)) . '</li>
+            </ol>
+        </div>';
+    }
+?>    
+    
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -32,160 +79,18 @@
         </div>
 
         <div class="product-container">
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Tarta de Limón y Merengue</h3>
-                    <p><strong><ins>Descripción:</ins></strong><br> Una tarta fresca con una base crujiente, relleno de limón cremoso y cubierto con merengue suave y dorado perfecta para acompañar con un café o té.</p>
-                    <strong><ins>Ingredientes:</ins></strong>
-                    <ul>
-                        <li>1 base de masa quebrada.</li>
-                        <li>4 limones (jugo y ralladura).</li>
-                        <li>200 g de azúcar.</li>
-                        <li>3 huevos.</li>
-                        <li>100 g de mantequilla.</li>
-                        <li>200 g de azúcar glas (para el merengue).</li>
-                        <li>3 claras de huevo.</li>
-                        <li>1 cucharadita de maicena.</li>
-                    </ul>
-                    <strong><ins>Pasos:</ins></strong>
-                    <ol>
-                        <li>Precalentar el horno a 180°C.</li>
-                        <li>Coloca la base de masa quebrada en un molde para tartas y hornéala durante 10 minutos.</li>
-                        <li>En un bol, bate los huevos con el azúcar, el jugo y la ralladura de los limones, y la maicena.</li>
-                        <li>Cocina la mezcla a fuego lento hasta que espese, luego agrega la mantequilla y mezcla bien.</li>
-                        <li>Vierte el relleno de limón sobre la base de la tarta y hornea 20 minutos.</li>
-                        <li>Bate las claras a punto de nieve y añade el azúcar glas poco a poco.</li>
-                        <li>Cubre la tarta con el merengue y hornéala durante 10 minutos hasta que esté dorado.</li>
-                    </ol>
-                    </p>
-                    <img src="../imagenes/receta1.jpg" alt="Imagén de Tarta de limón y merengue">
-                </div>
+            
+            <div class="product-detail">
+            <?php
+                $i = 1;
+                foreach ($recetas as $receta) {
+                    echo "<!-- Receta #$i -->\n";
+                    echo formatearReceta($receta);
+                    $i++;
+                }
+            ?>
             </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Brownie de Chocolate y Nueces</h3>
-                    <p><ins><strong>Descripción:</strong></ins>
-                    <br>Un pastel húmedo de chocolate con trozos de nueces que se derriten en cada bocado.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>200 g de chocolate negro,</li>
-                            <li>100 g de mantequilla,</li>
-                            <li>200 g de azúcar,</li>
-                            <li>3 huevos,</li>
-                            <li>3 huevos,</li>
-                            <li>100 g de harina,</li>
-                            <li>50 g de nueces picadas,</li>
-                            <li>1 cucharadita de esencia de vainilla.</li>
-                        </ul>
-                    </p>
-                    <p><ins><strong>Pasos:</strong></ins>
-                        <ol>
-                            <li>Precalentar el horno a 180°C.</li>
-                            <li>Derretir el chocolate y la mantequilla en un recipiente al baño maría.</li>
-                            <li>Batir los huevos con el azúcar y la esencia de vainilla hasta que estén espumosos.</li>
-                            <li>Agregar el chocolate derretido a la mezcla de huevos y azúcar, y luego incorporar la harina.</li>
-                            <li>Añadir las nueces picadas.</li>
-                            <li>Verter la mezcla en un molde engrasado y hornear durante 20-25 minutos.</li>
-                        </ol>
-                    </p>
-                    <img src="../imagenes/receta2.jpg" alt="Imagén de Brownie de Chocolate y Nueces">
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Muffins de Arándano</h3>
-                    <p><ins><strong>Descripción:</strong></ins>
-                    <br>Suaves y esponjosos muffins con arándanos frescos, perfectos para un desayuno o merienda.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>250 g de harina.</li>
-                            <li>100 g de azúcar.</li>
-                            <li>1 huevo.</li>
-                            <li>120 ml de leche.</li>
-                            <li>80 g de mantequilla derretida.</li>
-                            <li>150 g de arándanos frescos.</li>
-                            <li>1 cucharadita de polvo de hornear.</li>
-                            <li>1 pizca de sal.</li>
-                        </ul>
-                    </p>
-                    <p><ins><strong>Pasos:</strong></ins>
-                        <ol>
-                            <li>Precalentar el horno a 190°C y preparar un molde para muffins con papelitos.</li>
-                            <li>En un bol, mezclar la harina, el polvo de hornear, la sal y el azúcar.</li>
-                            <li>En otro bol, batir el huevo, la leche y la mantequilla derretida.</li>
-                            <li>Verter los ingredientes húmedos sobre los secos y mezclar suavemente.</li>
-                            <li>Incorporar los arándanos.</li>
-                            <li>Distribuir la masa en los moldes y hornear durante 20-25 minutos.</li>
-                        </ol>
-                    </p>
-                    <img src="../imagenes/receta3.jpg" alt="Imagén de Muffins de Arándano">
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>4. Tiramisú Clásico</h3>
-                    <p><ins><strong>Descripción:</strong></ins>
-                    <br>Un delicioso postre italiano a base de capas de bizcochos empapados en café y mascarpone cremoso.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>250 g de queso mascarpone.</li>
-                            <li>2 yemas de huevo.</li>
-                            <li>100 g de azúcar.</li>
-                            <li>200 ml de café expreso.</li>
-                            <li>200 g de bizcochos de soletilla.</li>
-                            <li>100 ml de nata para montar.</li>
-                            <li>Cacao en polvo para decorar.</li>
-                        </ul></p>
-                    <p><ins><strong>Pasos:</strong></ins>
-                    <ol>
-                        <li>Batir las yemas con el azúcar hasta obtener una crema suave.</li>
-                        <li>Añadir el mascarpone a la mezcla de yemas y mezclar bien.</li>
-                        <li>Montar la nata y añadirla suavemente a la mezcla de mascarpone.</li>
-                        <li>Empapar los bizcochos de soletilla en el café y colocar una capa en el fondo de un recipiente.</li>
-                        <li>Cubrir con una capa de la crema de mascarpone.</li>
-                        <li>Repetir las capas y terminar con una capa de crema.</li>
-                        <li>Refrigerar durante 4 horas y espolvorear con cacao antes de servir.</li>
-                    </ol>
-                    </p>
-                    <img src="../imagenes/receta4.jpg" alt="Imagén de Tiramisú Clásico">
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <div class="product-detail">
-                    <h3>Galletas de Avena y Pasas</h3>
-                    <p><ins><strong>Descripción:</strong></ins>
-                    <br>Galletas crujientes con avena y pasas, ideales para acompañar un té o café en la tarde.</p>
-                    <p><ins><strong>Ingredientes:</strong></ins>
-                        <ul>
-                            <li>150 g de mantequilla.</li>
-                            <li>100 g de azúcar moreno.</li>
-                            <li>100 g de azúcar blanco.</li>
-                            <li>1 huevo, 150 g de avena.</li>
-                            <li>150 g de harina.</li>
-                            <li>100 g de pasas.</li>
-                            <li>1 cucharadita de esencia de vainilla.</li>
-                            <li>1 cucharadita de polvo de hornear.</li>
-                            <li>1 pizca de sal.</li>
-                        </ul>
-                    </p>
-                    <p><ins><strong>Pasos:</strong></ins>
-                        <ol>
-                            <li>Precalentar el horno a 180°C.</li>
-                            <li>Batir la mantequilla con los azúcares hasta que esté cremosa.</li>
-                            <li>Añadir el huevo y la esencia de vainilla, y mezclar bien.</li>
-                            <li>Incorporar la avena, harina, polvo de hornear y sal, y mezclar hasta formar una masa.</li>
-                            <li>Añadir las pasas y formar bolitas con la masa.</li>
-                            <li>6. Colocar las bolitas en una bandeja para hornear y aplastarlas ligeramente.</li>
-                            <li>Hornear durante 12-15 minutos.</li>
-                        </ol>
-                    </p>
-                    <img src="../imagenes/receta5.jpg" alt="Imagén de Galletas de Avena y Pasas">
-                </div>
-            </div>
+            
         </div>
 
         <footer id="footer" class="bg-dark text-white py-3">
