@@ -39,42 +39,44 @@ if (file_exists($archivo)) {
         </div>
 
         <?php if (empty($reservaciones)): ?>
+        <div class="container mt-5">
             <p class="text-center">No hay reservaciones registradas.</p>
+        </div>
         <?php else: ?>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($reservaciones as $reserva): ?>
-                        <?php
-                        
-                        $partes = explode(", ", $reserva);
-                        $nombre = str_replace("Nombre: ", "", $partes[0]);
-                        $telefono = str_replace("Teléfono: ", "", $partes[1]);
-                        $fecha = str_replace("Fecha: ", "", $partes[2]);
-                        $hora = str_replace("Hora: ", "", $partes[3]);
-                        $descripcion = str_replace("Descripción: ", "", $partes[4]);
-                        ?>
+            <div class="container mt-5">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td><?php echo htmlspecialchars($nombre); ?></td>
-                            <td><?php echo htmlspecialchars($telefono); ?></td>
-                            <td><?php echo htmlspecialchars($fecha); ?></td>
-                            <td><?php echo htmlspecialchars($hora); ?></td>
-                            <td><?php echo htmlspecialchars($descripcion); ?></td>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Descripción</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($reservaciones as $reserva): ?>
+                            <?php
+                            $partes = explode(", ", $reserva);
+                            $nombre = str_replace("Nombre: ", "", $partes[0]);
+                            $telefono = str_replace("Teléfono: ", "", $partes[1]);
+                            $fecha = str_replace("Fecha: ", "", $partes[2]);
+                            $hora = str_replace("Hora: ", "", $partes[3]);
+                            $descripcion = str_replace("Descripción: ", "", $partes[4]);
+                            ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($nombre); ?></td>
+                                <td><?php echo htmlspecialchars($telefono); ?></td>
+                                <td><?php echo htmlspecialchars($fecha); ?></td>
+                                <td><?php echo htmlspecialchars($hora); ?></td>
+                                <td><?php echo htmlspecialchars($descripcion); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
 </html>
