@@ -24,46 +24,31 @@
                 <h1>Recetas</h1>
             </div>
             <div class="menu">
-                <a class="menu-item" href="../index.html">Inicio</a> 
+                <a class="menu-item" href="../index.php">Inicio</a>
             </div>
         </div>
         
         <div class="product-container">
-            <div class="product-item-recetas">
-                <img src="../imagenes/postres1.jpg" alt="Tiramisú Clásico">
-                <div class="product-detail">
-                    <h4><ins>1. Tiramisú Clásico</ins></h4>
-                    <p><li>Un suave y esponjoso postre italiano hecho con capas de bizcocho empapadas en café, crema de mascarpone y espolvoreado con cacao amargo.</li></ul></p><br>
-                    <h5><strong>Precio:</strong> Q45.00</h5>
-                </div>
-            </div>
+            <?php
+                $menu = [
+                    ["fotografia" => "postres1.jpg", "nombre" => "Tiramisú Clásico", "descripcion" => "Un suave y esponjoso postre italiano hecho con capas de bizcocho empapadas en café, crema de mascarpone y espolvoreado con cacao amargo.", "precio" => " Q45.00"],
+                    ["fotografia" => "postres2.jpg", "nombre" => "Cheesecake de Frambuesa", "descripcion" => "Suave cheesecake cremoso sobre una base crujiente de galleta, cubierto con una deliciosa mermelada de frambuesas frescas.", "precio" => " Q50.00"],
+                    ["fotografia" => "postres3.jpg", "nombre" => "Cinnamon Roll con Glaseado de Vainilla", "descripcion" => "Un rollo de canela recién horneado, esponjoso y aromático, cubierto con un glaseado de vainilla suave y cremoso.", "precio" => " Q35.00"],
+                    ["fotografia" => "postres4.jpg", "nombre" => "Galletas de Avena con Chocolate", "descripcion" => "Galletas recién horneadas de avena, con trozos de chocolate negro y un toque de canela, perfectas para acompañar una taza de café.", "precio" => " Q25.00"]
+                    ];
 
-            <div class="product-item-recetas">
-                <img src="../imagenes/postres2.jpg" alt="Cheesecake de Frambuesa">
-                <div class="product-detail">
-                    <h4><ins>2. Cheesecake de Frambuesa</ins></h4>
-                    <p><li>Suave cheesecake cremoso sobre una base crujiente de galleta, cubierto con una deliciosa mermelada de frambuesas frescas.</li></ul></p><br>
-                    <h5><strong>Precio:</strong> Q50.00</h5>
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <img src="../imagenes/postres3.jpg" alt="Cinnamon Roll con Glaseado de Vainilla">
-                <div class="product-detail">
-                    <h4><ins>3. Cinnamon Roll con Glaseado de Vainilla</ins></h4>
-                    <p><li>Un rollo de canela recién horneado, esponjoso y aromático, cubierto con un glaseado de vainilla suave y cremoso.</li></ul></p>
-                    <h5><strong>Precio:</strong> Q35.00</h5>
-                </div>
-            </div>
+                foreach ($menu as $postre) {
+                    echo '<div class="product-item-recetas">';
+                    echo '  <img src="../imagenes/' . $postre["fotografia"]. '" alt="plato1">';
+                    echo '  <div class="product-detail">';
+                    echo '      <h4><ins>' . $postre["nombre"] . '</ins></h4>';
+                    echo '      <p><li>' . $postre["descripcion"] . '</li></ul></p>';
+                    echo '      <h5><strong>Precio:</strong> ' . $postre["precio"] . '</h5>';
+                    echo '  </div>';
+                    echo '</div>';
                     
-            <div class="product-item-recetas">
-                <img src="../imagenes/postres4.jpg" alt="Galletas de Avena con Chocolate">
-                <div class="product-detail">
-                    <h4><ins>4. Galletas de Avena con Chocolate</ins></h4>
-                    <p><li>Galletas recién horneadas de avena, con trozos de chocolate negro y un toque de canela, perfectas para acompañar una taza de café.</li></ul></p>
-                    <h5><strong>Precio:</strong> Q25.00</h5>
-                </div>
-            </div>
+                }
+            ?>
         </div>
         <br>
         <br>

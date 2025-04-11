@@ -15,54 +15,42 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
-        
+    
     </head>
     <body>
         <div id="header">
             <div class="identidad">
                 <img src="../imagenes/logo_cafeteria.jpg" alt="Logo del Rincon del Café S.A" title="Logo" width="66px">
-                <h1>Platos Fuertes</h1>
+                <h1>Reseñas</h1>
             </div>
             <div class="menu">
-                <a class="menu-item" href="../index.html">Inicio</a>
+                <a class="menu-item" href="../index.php">Inicio</a>
             </div>
         </div>
+        
+        <div class="container_resenia">
+            <div class="reviews">
+                <?php
+                $resenia = [
+                    ["fotografia" => "comentario1.jpg", "nombre" => "Theo James", "calificacion" => "⭐⭐⭐⭐⭐","descripcion" => "Excelente servicio, muy rápido y eficiente. Totalmente recomendado."],
+                    ["fotografia" => "comentario2.jpg", "nombre" => "Ian Somerhalder", "calificacion" => "⭐⭐⭐⭐","descripcion" => "Buen servicio, aunque podría mejorar la atención al cliente."],
+                    ["fotografia" => "comentario3.jpg", "nombre" => "Paul Wesley", "calificacion" => "⭐⭐⭐⭐⭐","descripcion" => "Muy satisfecho con la compra. Volveré a usar este servicio."],
+                    ["fotografia" => "comentario4.jpg", "nombre" => "Santiago Talledo", "calificacion" => "⭐⭐⭐⭐","descripcion" => "Excelente servicio y café de muy buena calidad. Los desayunos son abundantes y deliciosos. El ambiente es acogedor."],
+                    ["fotografia" => "comentario5.jpg", "nombre" => "Robert pattinson", "calificacion" => "⭐⭐⭐⭐⭐","descripcion" => "Definitivamente uno de los mejores cafés de la ciudad. El espresso es perfecto y el ambiente es ideal para trabajar."],
+                    ["fotografia" => "comentario6.jpg", "nombre" => "Tom Cruise", "calificacion" => "⭐⭐⭐⭐⭐","descripcion" => "Hay muchas opciones de cafeterías pero El ambiente es moderno y agradable para una charla con amigos."]
+                    ];
 
-        <div class="product-container">
-            <div class="product-item-recetas">
-                <img src="../imagenes/plato1.jpg" alt="Croissant Relleno de Jamón y Queso Suizo">
-                <div class="product-detail">
-                    <h4><ins>1. Croissant Relleno de Jamón y Queso Suizo</ins></h4>
-                    <p><li>Un croissant recién horneado, relleno con jamón serrano y queso suizo derretido, creando una combinación de texturas crujientes y suaves.</li></ul></p><br>
-                    <h5><strong>Precio:</strong> Q35.00</h5>
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <img src="../imagenes/plato2.jpg" alt="Bagel con Salmón Ahumado y Queso Crema">
-                <div class="product-detail">
-                    <h4><ins>2. Bagel con Salmón Ahumado y Queso Crema</ins></h4>
-                    <p><li>Un bagel recién horneado cubierto con queso crema, salmón ahumado, alcaparras y cebollas moradas en rodajas finas.</li></ul></p><br>
-                    <h5><strong>Precio:</strong> Q48.00</h5>
-                </div>
-            </div>
-            
-            <div class="product-item-recetas">
-                <img src="../imagenes/plato3.jpg" alt="Sándwich de Pollo al Pesto">
-                <div class="product-detail">
-                    <h4><ins>3. Sándwich de Pollo al Pesto</ins></h4><br>
-                    <p><li>Pechuga de pollo a la parrilla, acompañada de una salsa pesto casera, tomate fresco y queso mozzarella, todo dentro de un pan artesanal ligeramente tostado.</li></ul></p>
-                    <h5><strong>Precio:</strong> Q40.00</h5>
-                </div>
-            </div>
-
-            <div class="product-item-recetas">
-                <img src="../imagenes/plato4.jpg" alt="Tostada de Hummus y Verduras">
-                <div class="product-detail">
-                    <h4><ins>4. Tostada de Hummus y Verduras</ins></h4>
-                    <p><li>Tostada de pan integral cubierta con hummus casero, zanahorias ralladas, pepino fresco y espinacas, todo rociado con aceite de oliva y semillas de sésamo.</li></ul></p><br>
-                    <h5><strong>Precio:</strong> Q65.00</h>
-                </div>
+                foreach ($resenia as $comentario) {
+                    echo '<div class="review-card">';
+                    echo '  <div class="profile">';
+                    echo '      <img src="../imagenes/' . $comentario["fotografia"]. '" alt="Usuario 1">';
+                    echo '      <div class="name">' . $comentario["nombre"] . '</div>';
+                    echo '  </div>';
+                    echo '  <div class="stars">' . $comentario["calificacion"] . '</div>';
+                    echo '  <p class="text">' . $comentario["descripcion"] . '</p>';
+                    echo '</div>';
+                }
+                ?>
             </div>
         </div>
         

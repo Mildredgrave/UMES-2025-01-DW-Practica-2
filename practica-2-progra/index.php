@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Restaurante Rincón del Café, donde disfrutarás de cafés de alta calidad y postres artesanales en un ambiente acogedor.">
+        <meta name="keywords" content="restaurante, café, postres, artesanal, Rincón del Café">
+        <meta name="author" content="Restaurante de café">
+        <meta property="og:title" content="Restaurante de Café">
+        <meta property="og:description" content="Un restaurante único con lo mejor en café y postres artesanales.">
+        <meta property="og:image" content="imagenes/restaurante1.jpg">
+        <meta property="og:url" content="http://rincondelcafe.com">
+        <title>Rincón del Café</title>
+        <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="imagenes/logo_cafeteria.jpg" alt="" width="40" class="d-inline-block align-text-top">
+                        Rincón del Café
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="menu/postres.php">Postres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="menu/platos_fuertes.php">Platos Fuertes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="personal/personal.php">Personal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resenias/comentario.php">Reseñas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="recetas/recetas-dulces.php">Recetas Dulces</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="recetas/recetas-saladas.php">Recetas Saladas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalCotizacion">Solicitar Reservación</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservaciones/reservaciones.txt">Reservaciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="content">
+            <!-- Cuadros de dialogo -->
+            <div class="modal fade" id="modalCotizacion" tabindex="-1" aria-labelledby="modalCotizacionLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modalCotizacionLabel">Nueva Reservación</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="reservaciones.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre completo:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required> <!-- required para que sea obligario -->
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono:</label>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha" class="form-label">Fecha de Reservación:</label>
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hora" class="form-label">Hora de Reservación:</label>
+                                    <input type="time" class="form-control" id="hora" name="hora" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">Descripción:</label>
+                                    <textarea rows="5" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese detalles adicionales (opcional)"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Reservar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="center">NUESTRO RESTAURANTE:</h2>
+            <p class="center-text">
+                En nuestro restaurante nos dedicamos a ofrecerte una experiencia única, donde el café de calidad y los postres artesanales 
+                se fusionan en un ambiente acogedor.
+            </p>
+
+            <div class="product-container-inicio">
+                <?php
+                    $valores = [
+                        ["nombre" => "MISIÓN", "descripcion" => "En Rincón del Café nos comprometemos a ofrecer una experiencia culinaria excepcional que se distinga por la calidad, frescura y autenticidad de nuestros productos. Seleccionamos cuidadosamente granos de café de las mejores regiones, y los combinamos con una variedad de postres y panes elaborados artesanalmente en nuestro propio taller. Nuestro objetivo es no solo ofrecer una bebida o un dulce, sino crear un espacio donde cada cliente pueda relajarse, socializar o trabajar, mientras disfruta de la calidez de un ambiente diseñado para hacerlos sentir como en casa. Nos dedicamos a brindar un servicio personalizado, atento y cercano, para que cada visita sea una experiencia memorable que invite a regresar."],
+                        ["nombre" => "VISIÓN", "descripcion" => "En Rincón del Café, aspiramos a ser el lugar favorito de todos aquellos que buscan una experiencia única y auténtica, donde el café de alta calidad y los postres artesanales se fusionen con un ambiente acogedor y lleno de calidez. Queremos ser reconocidos como un punto de encuentro en la ciudad, donde cada cliente, al entrar, encuentre un refugio de aromas, sabores y momentos agradables. Nuestra visión es consolidarnos como un referente de excelencia, innovación y hospitalidad en la cultura del café, creando un espacio que invite a disfrutar tanto del presente como de la compañía."],
+                    ];
+
+                    foreach ($valores as $declaracion) {
+                        echo '<div class="product-item">';
+                        echo '  <div class="product-detail">';
+                        echo '      <h2>' . $declaracion["nombre"] . ' - ' . '</h2>';
+                        echo '      <p>' . $declaracion["descripcion"] . '</p>';
+                        echo '  </div>';
+                        echo '</div>';
+    
+                    }
+                ?>
+            </div>
+            <br>
+            <br>
+            <h2 class="center"><del>Galería</del></h2>
+            <br>
+            <div class="contenedor">
+                <div class="area-a"><img src="imagenes/restaurante1.jpg" alt="Interior del restaurante"></div>
+                <div class="area-b"><img src="imagenes/restaurante2.jpg" alt="Exterior del restaurante"></div>
+                <div class="area-c"><img src="imagenes/restaurante3.jpg" alt="Instalaciones donde se prepara el café"></div>
+                <div class="area-d"><img src="imagenes/restaurante4.jpg" alt="Personal preparando café o postres"></div>
+                <div class="area-e"><img src="imagenes/restaurante5.jpg" alt="Área del restaurante"></div>
+                <div class="area-f"><img src="imagenes/restaurante.jpeg" alt="Vista del restaurante"></div>
+            </div>
+        </div>
+
+        <footer id="footer" class="bg-dark text-white py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-6 text-center text-md-start">
+                        Rincón del Café. <sup>[R]</sup>
+                    </div>
+                    <div class="col-12 col-md-6 text-center text-md-end">
+                        18 Avenida A, Zona 10, Guatemala, Guatemala<br>
+                        Teléfonos: 2222-3023 o 2222-5678
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

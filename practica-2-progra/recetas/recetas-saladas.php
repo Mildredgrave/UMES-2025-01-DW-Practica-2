@@ -26,7 +26,7 @@
                 <h1>Recetas Saladas</h1>
             </div>
             <div class="menu">
-                <a class="menu-item" href="../index.html">Inicio</a> 
+                <a class="menu-item" href="../index.php">Inicio</a> 
             </div>
         </div>
 

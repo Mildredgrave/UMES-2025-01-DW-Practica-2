@@ -3,7 +3,7 @@
     <head>
         <title>Rincón del Café</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Restaurante Rincón del Café, donde disfrutarás de cafés de alta calidad y postres artesanales en un ambiente acogedor.">
         <meta name="keywords" content="restaurante, café, postres, artesanal, Rincón del Café">
         <meta name="author" content="Restaurante de café">
@@ -27,7 +27,7 @@
                 <h1>Recetas Dulces</h1>
             </div>
             <div class="menu">
-                <a class="menu-item" href="../index.html">Inicio</a>
+                <a class="menu-item" href="../index.php">Inicio</a>
             </div>
         </div>
 
