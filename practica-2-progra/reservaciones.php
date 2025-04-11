@@ -1,4 +1,11 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $nombre = $_POST['nombre'];
@@ -10,17 +17,14 @@
         echo "<h2>Reservación exitosa</h2>";
         echo "<p>Hemos recibido tu solicitud de reservación y se te estará enviando un mensaje a tu número de teléfono $telefono</p>";
 
-
-        // Verifica si el directorio existe, si no, lo crea
         (!is_dir('reservaciones')) ? mkdir('reservaciones') : '';
-        // Cambia al directorio
         chdir('reservaciones');
-        // Crea o abre el archivo en modo append
         $archivo = fopen('reservaciones.txt', 'a+');
-        // Escribe la información en el archivo
         fwrite($archivo, "$nombre, $telefono, $fecha_de_reservacion, $hora_de_reservacion, $descripcion_de_la_reserva\n");
-        // Cierra el archivo
         fclose($archivo);
 
+        echo '<a href="index.php" class="btn btn-primary mt-3">Volver al inicio</a>';
     }
 ?>
+</body>
+</html>
